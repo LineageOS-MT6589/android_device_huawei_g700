@@ -22,8 +22,13 @@ LOCAL_PATH := device/huawei/g700
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay/
 
 # prebuilt kernel modules
-MOD_TGT := /system/lib/modules
-MOD_SRC := $(LOCAL_PATH)/prebuilt/modules
+# MOD_TGT := /system/lib/modules
+# MOD_SRC := $(LOCAL_PATH)/prebuilt/modules
+
+# LANGUAGE
+PRODUCT_DEFAULT_LANGUAGE := ru
+PRODUCT_DEFAULT_REGION := RU
+PRODUCT_LOCALES := ru_RU en_US uk_UA
 
 PRODUCT_PROPERTY_OVERRIDES := \
         service.adb.root=1 \
@@ -58,7 +63,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
 	ro.mediatek.wlan.p2p=1 \
 	ro.mediatek.wlan.wsc=1 \
 	ro.opengles.version=131072 \
-	ro.sf.lcd_density=320 \
+	ro.sf.lcd_density=275 \
 	ro.telephony.ril_class=MediaTekRIL \
         ro.telephony.ril.config=fakeiccid \
 	wifi.direct.interface=p2p0 \
@@ -89,12 +94,13 @@ PRODUCT_PACKAGES += \
     libfmcust \
     libmtkplayer
     
+# Omx
 PRODUCT_COPY_FILES += \
-        frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
-        frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-        frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
-	$(LOCAL_PATH)/media_codecs.xml:system/etc/media_codecs.xml \
-	$(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml
+    $(LOCAL_PATH)/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml \
+    $(LOCAL_PATH)/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    $(LOCAL_PATH)/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    $(LOCAL_PATH)/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
 # Wifi
 PRODUCT_PACKAGES += \
